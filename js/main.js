@@ -1,8 +1,7 @@
-// Strings
-const myVariable = "Mathematics";
-
-console.log(myVariable.length);
-console.log(myVariable.charAt(5));
-console.log(myVariable.indexOf("mat"));
-
-
+let username = prompt("Please enter your name.")
+if (username){
+console.log(username);
+}
+else{
+    console.log("hey, enter your name");
+}
