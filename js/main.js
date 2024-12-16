@@ -1,51 +1,28 @@
-/* function pizzaFactory(pizzaSize){
-    const crust = "original";
-    const size = pizzaSize;
-    return {
-        bake: () => console.log(`Baking a ${size} ${crust} crust pizza.`)
-    };
-}
+//JSON: JavaScript Object Notation
 
-const myPizza = pizzaFactory("small");
-myPizza.bake(); */
+const myObj = {
+    name: "Dave",
+    hobbies: ["eat", "sleep", "code"],
+    hello: function () {
+        console.log("Hello !");
+    }
+};
 
+console.log("Hello!");
+console.log(myObj.name);
+myObj.hello();
 
-//Js Classes
-/* class Pizza{
-    constructor(pizzaSize){
-        this.size = pizzaSize;
-        this.crust = "original"
-    }
-    getCrust(){
-        return this.crust;
-    }
-    setCrust(crustToSet){
-        this.crust = crustToSet;
-    }
-    
-} */
+console.log(typeof myObj);
 
 
-class Pizza{
-    crust = "original";
-    #sauce = "traditional";
-    #size;
-    constructor(pizzaSize){
-        this.#size = pizzaSize;
-    }
-    getCrust(){
-        return this.crust;
-    }
-    setCrust(crustToSet){
-        this.crust = crustToSet;
-    }
+const sendJSON = JSON.stringify(myObj);
+console.log(sendJSON);
+console.log(typeof sendJSON);
+console.log(sendJSON.name);
 
-    hereYouGo(){
-        console.log(`Here's yout ${this.crust} ${this.#sauce} sauce ${this.#size} pizza.`);
-    }
-    
-}
+const receivedJSON = JSON.parse(sendJSON);
+console.log(receivedJSON);
+console.log(typeof receivedJSON);
+console.log(receivedJSON.name);
 
-const myPizza = new Pizza("large");
-myPizza.hereYouGo();
-console.log(myPizza.crust);
+
