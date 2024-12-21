@@ -17,17 +17,30 @@ const initApp = () => {
 
     view.addEventListener("click", (event) => {
         
-        event.target.style.backgroundColor = "purple";
+        view.classList.toggle("purple");
+        view.classList.toggle("darkblue");
 
     });
 
     div.addEventListener("click", (event) => {
-        event.target.style.backgroundColor = "blue";
+        div.classList.toggle("blue");
+        div.classList.toggle("black");
     });
 
     h2.addEventListener("click", (event) => {
-        
-        event.target.textContent = "Clicked";
+        const myText = event.target.textContent;
+        myText === "My 2nd View" 
+        ? (event.target.textContent = "Clicked")
+        : (event.target.textContent = "My 2nd View");
     });
 
-}
+    const nav = document.querySelector("nav");
+    nav.addEventListener("mouseover", (event) => {
+        event.target.classList.add("height100");
+    });
+
+    nav.addEventListener("mouseout", (event) => {
+        event.target.classList.remove("height100");
+    })
+
+};
