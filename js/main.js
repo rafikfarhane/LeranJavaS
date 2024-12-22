@@ -1,20 +1,21 @@
+// Web Storage API
 
+// Not part of the DOM - refers to the Window API
+// Available to JS via the globale variable: window
 
-// Syntax: addEventListener("click", function, useCapture)
+// We do not have to type window. It is implied:
 
-
-document.addEventListener("readystatechange", (event) => {
-    if(event.target.readyState === "complete") {
-        console.log("readyState: complete");
-        initApp();
+const myArray = ["eat", "sleep", "code"];
+const myObject = {
+    name: "Dave",
+    hobbies: ["eat", "sleep", "code"],
+    logName: function(){
+        console.log(this.name);
     }
-});
+}
 
-const initApp = () => {
-    const view3 = document.querySelector("#view3");
-    const myForm = view3.querySelector("#myForm");
-    myForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        console.log("submit event");
-    });
-};
+localStorage.setItem("mylocalStore", JSON.stringify(myArray));
+const storeLength = localStorage.length;
+const mylocalData = JSON.parse(localStorage.getItem("mylocalStore"));
+
+console.log(storeLength);
