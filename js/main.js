@@ -3,11 +3,6 @@
 
 //Callbacks are functions that are passed to other functions as parameters:
 
-function firstFunction(parameters, callback){
-    //do stuff
-    callback(); //Shaine of events
-}
-
 //AKA "callback hell", because it could get complicated with anonymous functions, promises can maybe help:
 
 // Promises deliver async code, but js is usually snychronous(doing one thing at a time). Promises: you go ahead an I will catch up once I am finsihed with my work
@@ -15,26 +10,17 @@ function firstFunction(parameters, callback){
 
 // 3 states: Pending, Fulfilled, Rejected
 
-const myPromise = new Promise((resolve, reject) => {
-    const error = false;
-    if (!error){
-        resolve("Yes! resolved the promise!");
-    }
-    else {
-        reject("No! rejected the promise.");
-    }
+//fetch returns a promise
+
+const users = fetch("https://jsonplaceholder.typicode.com/users")
+.then(response => {
+    console.log(response);
+    return response.json();
+})
+.then(data => {
+    data.forEach(user => {
+        console.log(user);
+    })
 });
 
-const myNextPromise = new Promise((resolve, reject) => {
-    setTimeout(function() {
-        resolve("myNextPromise resolved!")
-    }, 3000);
-});
-
-myNextPromise.then(value => {
-    console.log(value)
-});
-
-myPromise.then(value => {
-    console.log(value)
-});
+console.log(users);
